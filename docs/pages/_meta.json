@@ -1,5 +1,14 @@
 {
   "index": {
     "title": "Introduction"
+  },
+  "one-pager": {
+    "title": "What is WE?"
+  },
+  "cardinal": {
+    "title": "Cardinal"
+  },
+  "nakama": {
+    "title": "Nakama"
   }
 }

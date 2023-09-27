@@ -39,7 +39,7 @@ var PlanetInfo = cardinal.NewReadType[PlanetInfoRequest, PlanetInfoReply](
 `NewReadType` creates a new `ReadType`. `ReadType`s wrap around a request and reply type. The request specifies the data needed for the read request. The reply type represents the data requested. Reads also require a function that implements the read.
 
 <Callout type={"warning"}>
-    Read handler functions should NOT modify state. State should only be modified in <Link href="/Cardinal/API-Reference/Systems">Systems</Link>.
+    Read handler functions should NOT modify state. State should only be modified in <Link href="/docs/pages/cardinal/API-Reference/Systems">Systems</Link>.
 </Callout>
 
 ```go
@@ -75,7 +75,7 @@ func NewReadType[Request any, Reply any](
 
 `NewReadTypeWithEVMSupport` creates a new `ReadType` with EVM support, allowing this read to handle requests originating from EVM smart contracts.
 <Callout type={"warning"}>
-    Not all Go types are supported when using EVM supported reads. <Link href="/Cardinal/API-Reference/evm-support">Read More</Link>
+    Not all Go types are supported when using EVM supported reads. <Link href="/docs/pages/cardinal/API-Reference/evm-support">Read More</Link>
 </Callout>
 
 ```go
