@@ -39,7 +39,7 @@ while [ -z "$DA_AUTH_TOKEN" ]; do
         echo "DA_AUTH_TOKEN set: $DA_AUTH_TOKEN"
     else
         echo "DA_AUTH_TOKEN is not set yet. Retrying..."
-        sleep 1  # Adjust the sleep duration as needed
+        sleep 2  # Adjust the sleep duration as needed
     fi
 done
 

@@ -52,4 +52,10 @@ sed -i'.bak' 's#localhost:1317#0.0.0.0:1317#g' /root/.world/config/app.toml
 
 sed -i 's/"stake"/"eth"/g' /root/.world/config/genesis.json
 
+echo "attempting to update genesis..."
+
+jq '.app_state.evm.alloc += {"0xaa9288F88233Eb887d194fF2215Cf1776a6FEE41": { "balance" : "0x16345785d89ffff" }}' /root/.world/config/genesis.json > /root/.world/config/genesis_tmp.json && mv /root/.world/config/genesis_tmp.json /root/.world/config/genesis.json
+
+echo "updated..."
+
 world start --rollkit.aggregator true --rollkit.da_layer celestia --rollkit.da_config=$DA_CONFIG --rollkit.namespace_id $DA_NAMESPACE_ID --rollkit.da_start_height $DA_BLOCK_HEIGHT --rollkit.block_time $BLOCK_TIME --minimum-gas-prices 0eth
