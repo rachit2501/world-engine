@@ -5,9 +5,10 @@ import (
 	"crypto/tls"
 	"errors"
 	"fmt"
-	zerolog "github.com/rs/zerolog/log"
 	"net"
 	"os"
+
+	zerolog "github.com/rs/zerolog/log"
 
 	"pkg.world.dev/world-engine/cardinal/ecs"
 	"pkg.world.dev/world-engine/cardinal/ecs/component"
@@ -175,7 +176,13 @@ func (s *msgServerImpl) Serve() error {
 			zerolog.Fatal().Err(err).Msg("")
 		}
 	}()
-	s.shutdown = server.GracefulStop
+	s.shutdown = func() {
+		server.GracefulStop()
+		err := listener.Close()
+		if err != nil {
+			panic(errors.Join(fmt.Errorf("error closing connection on %s", s.port), err))
+		}
+	}
 	return nil
 }
 
