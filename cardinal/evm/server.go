@@ -187,6 +187,7 @@ func (s *msgServerImpl) Serve() error {
 }
 
 func (s *msgServerImpl) Shutdown() {
+	zerolog.Logger.Info().Msg("SHUTTING DOWN EVM")
 	if s.shutdown != nil {
 		s.shutdown()
 	}
