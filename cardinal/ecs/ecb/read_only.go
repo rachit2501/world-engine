@@ -37,7 +37,7 @@ func (m *Manager) ToReadOnly() store.Reader {
 
 // refreshArchIDToCompTypes loads the map of archetype IDs to []ComponentMetadata from redis. This mapping is write
 // only, i.e. if an archetype ID is in this map, it will ALWAYS refer to the same set of components. It's ok to save
-// this to memory instead of reading from redit each time. If an archetype ID is not found in this map.
+// this to memory instead of reading from redis each time. If an archetype ID is not found in this map.
 func (r *readOnlyManager) refreshArchIDToCompTypes() error {
 	archIDToComps, ok, err := getArchIDToCompTypesFromRedis(r.client, r.typeToComponent)
 	if err != nil {
